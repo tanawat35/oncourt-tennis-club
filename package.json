@@ -9,7 +9,7 @@
     "build": "vite build",
     "build:single": "SINGLE=1 vite build --outDir dist-single",
     "start": "node server/server.js",
-    "build:artifact": "SINGLE=1 vite build --outDir dist-single && node tools/to-artifact.mjs",
+    "build:artifact": "vite build && node tools/to-artifact.mjs",
     "build:preview": "VITE_MEDIA=./public/media/ SINGLE=1 vite build --outDir dist-preview && cp dist-preview/index.html OnCourt-preview.html"
   },
   "keywords": [],
