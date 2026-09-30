@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-single
+dist-preview
+dist-artifact
+server/data.json
+OnCourt-preview.html

@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+const ctx = await b.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 800 } });
+const p = await ctx.newPage(); const errs = [];
+p.on('pageerror', (e) => errs.push(e.message));
+await p.goto('http://localhost:3000/'); await p.waitForTimeout(3000);
+await p.evaluate(() => scrollTo(0, document.getElementById('programs').offsetTop)); await p.waitForTimeout(2500);
+await p.screenshot({ path: '/tmp/claude-0/shots/r-programs.png' });
+console.log('reduced ok', errs);
+await b.close();
